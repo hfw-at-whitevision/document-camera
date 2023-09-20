@@ -1,13 +1,11 @@
 import './App.css';
-import {Scanner} from './lib/components/scanner';
+import {Scanner} from './components/scanner';
 import {useState} from "react";
-import Camera, {FACING_MODES} from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import CameraUI from "./components/Camera";
 
 function App() {
     const [file, setFile] = useState(null);
-    const [idealFacingMode, setIdealFacingMode] = useState(null);
-    const [isMaxResolution, setIsMaxResolution] = useState(false);
 
     const handleUpload = async (e) => {
         const file = e.target.files[0];
@@ -21,7 +19,7 @@ function App() {
         console.log(base64File);
     }
 
-    function handleTakePhoto (dataUri) {
+    function handleTakePhoto(dataUri) {
         setFile(dataUri);
     }
 
@@ -35,23 +33,8 @@ function App() {
                 gap: '4rem',
                 padding: '4rem',
             }}>
-
-                <div>
-                    <button onClick={ (e) => {
-                        setIdealFacingMode(FACING_MODES.USER);
-                        setIsMaxResolution(false);
-                    }}> FACING_MODES.USER </button>
-
-                    <button onClick={ (e) => {
-                        setIdealFacingMode(FACING_MODES.ENVIRONMENT);
-                        setIsMaxResolution(true);
-                    }}> FACING_MODES.ENVIRONMENT & MaxResolution</button>
-                </div>
-
-                <Camera
-                    idealFacingMode = {idealFacingMode}
-                    isMaxResolution = {isMaxResolution}
-                    onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+                <CameraUI
+                    onTakePhoto={handleTakePhoto}
                 />
 
                 <input type='file' onChange={handleUpload}/>

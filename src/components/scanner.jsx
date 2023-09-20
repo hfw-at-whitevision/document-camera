@@ -1,8 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import './scanner.css';
 
-// const images = [{ src: '/paper-high.png' }, { src: '/paper-2.png' }];
-
 export const Scanner = ({image}) => {
     const containerRef = useRef(null);
     const openCvURL = 'https://docs.opencv.org/4.7.0/opencv.js';
@@ -52,7 +50,10 @@ export const Scanner = ({image}) => {
 
     return (
         <>
-            <div className="scanner-container">
+            <div className="scanner-container" style={{
+                display: 'grid',
+                gap: '4rem',
+            }}>
                 <div>
                     {!loadedOpenCV && (
                         <div>
