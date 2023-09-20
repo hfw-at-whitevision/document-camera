@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mijn POC App</string>
+    <string name="title_activity_main">Mijn POC App</string>
+    <string name="package_name">hubl.whitevision.nl</string>
+    <string name="custom_url_scheme">hubl.whitevision.nl</string>
+</resources>
