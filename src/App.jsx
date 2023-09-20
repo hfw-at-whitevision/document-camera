@@ -6,6 +6,7 @@ import CameraUI from "./components/Camera";
 
 function App() {
     const [file, setFile] = useState(null);
+    const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const handleUpload = async (e) => {
         const file = e.target.files[0];
@@ -21,6 +22,7 @@ function App() {
 
     function handleTakePhoto(dataUri) {
         setFile(dataUri);
+        setIsCameraOpen(false);
     }
 
     return (
@@ -33,9 +35,14 @@ function App() {
                 gap: '4rem',
                 padding: '4rem',
             }}>
-                <CameraUI
-                    onTakePhoto={handleTakePhoto}
-                />
+
+                {isCameraOpen && (
+                    <CameraUI
+                        onTakePhoto={handleTakePhoto}
+                    />
+                )}
+
+                <button type='button' onClick={() => setIsCameraOpen(true)}>Open Camera</button>
 
                 <input type='file' onChange={handleUpload}/>
 

@@ -5,8 +5,26 @@ export default function CameraUI({onTakePhoto}) {
     const [idealFacingMode, setIdealFacingMode] = useState(null);
     const [isMaxResolution, setIsMaxResolution] = useState(false);
 
-    return <>
-        <div>
+    return <section style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 1000,
+    }}>
+        <div style={{
+            position: 'absolute',
+            top: 4,
+            left: 0,
+            zIndex: 1001,
+            gap: 4,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            width: '100%',
+        }}>
             <button onClick={(e) => {
                 setIdealFacingMode(FACING_MODES.USER);
                 setIsMaxResolution(false);
@@ -24,6 +42,7 @@ export default function CameraUI({onTakePhoto}) {
             idealFacingMode={idealFacingMode}
             isMaxResolution={isMaxResolution}
             onTakePhoto={onTakePhoto}
+            isFullscreen={true}
         />
-    </>
+    </section>
 }
