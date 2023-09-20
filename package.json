@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/cli": "^5.4.0",
+    "@capacitor/core": "^5.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-html5-camera-photo": "^1.5.11"
