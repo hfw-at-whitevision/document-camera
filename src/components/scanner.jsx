@@ -50,8 +50,12 @@ export const Scanner = ({image}) => {
 
     return (
         <>
-            <div className="scanner-container" style={{
-                display: 'grid',
+            <div
+                className="scanner-container"
+                style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
                 gap: '4rem',
             }}>
                 <div>
@@ -70,6 +74,14 @@ export const Scanner = ({image}) => {
                     }
                 </div>
                 <div ref={containerRef} id="result-container"></div>
+                <pre
+                    style={{
+                    maxWidth: 480,
+                    overflow: 'scroll',
+                }}
+                >
+                    {image}
+                </pre>
             </div>
         </>
     );
