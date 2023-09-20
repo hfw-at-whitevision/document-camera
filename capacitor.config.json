@@ -1,0 +1,8 @@
+{
+  "appId": "hubl.whitevision.nl",
+  "appName": "Mijn POC App",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
