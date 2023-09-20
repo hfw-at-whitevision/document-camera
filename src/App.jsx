@@ -1,13 +1,10 @@
 import './App.css';
 import {Scanner} from './components/scanner';
 import {useState} from "react";
-import 'react-html5-camera-photo/build/css/index.css';
-import CameraUI from "./components/Camera";
 import {Camera} from "@capacitor/camera";
 
 function App() {
     const [file, setFile] = useState(null);
-    const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const handleUpload = async (e) => {
         const file = e.target.files[0];
@@ -18,12 +15,6 @@ function App() {
             reader.onerror = reject;
         });
         setFile(base64File);
-        console.log(base64File);
-    }
-
-    function handleTakePhoto(dataUri) {
-        setFile(dataUri);
-        setIsCameraOpen(false);
     }
 
     const handleOpenCamera = async (e) => {
@@ -33,6 +24,10 @@ function App() {
             quality: 90,
             allowEditing: false,
             resultType: 'dataUrl',
+            width: 2048,
+            height: 2048,
+            presentationStyle: 'fullscreen',
+            correctOrientation: true,
         });
         setFile(image.dataUrl);
     }
@@ -47,11 +42,6 @@ function App() {
                 gap: '4rem',
                 padding: '4rem',
             }}>
-
-                <CameraUI
-                    open={isCameraOpen}
-                    onTakePhoto={handleTakePhoto}
-                />
 
                 <button type='button' onClick={handleOpenCamera}>Open Camera</button>
 
